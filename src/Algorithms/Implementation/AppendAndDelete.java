@@ -28,10 +28,10 @@ public class AppendAndDelete {
                     k--;
                 }
                 if (croppedInputStr.equals(t)) {
-                    if (k==0){
+                    if (k == 0) {
                         return yes;
-                    }else{
-                        return  no;
+                    } else {
+                        return no;
                     }
 
                 } else if (numExtraString > k) {
@@ -50,10 +50,14 @@ public class AppendAndDelete {
         } else if (sizeInputStr < sizeResultStr) {
             croppedInputStr = s;
             croppedResultStr = t.substring(0, sizeInputStr);
-
+            int movesNeeded = sizeResultStr - sizeInputStr;
             if (croppedInputStr.equals(croppedResultStr)) {
                 int movesToEqual = sizeResultStr - sizeInputStr;
-                if (movesToEqual <= k) {
+                if (movesToEqual == k) {
+                    return yes;
+                } else if (movesNeeded % 2 == 0 && k % 2 == 0 && movesNeeded < k) {
+                    return yes;
+                } else if (movesNeeded % 2 == 1 && k % 2 == 1 && movesNeeded < k) {
                     return yes;
                 } else {
                     return no;
